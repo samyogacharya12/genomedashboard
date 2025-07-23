@@ -1,0 +1,12 @@
+<Stylesheet>
+  <Global>
+    <viewLimits>0:10</viewLimits>
+    <clamp>0:10</clamp>
+  </Global>
+  <FeatureStyle>
+    <glyph>BOX</glyph>
+    <FGColor>#0080FF</FGColor>
+    <BGColor>#DDEEFF</BGColor>
+    <height>8</height>
+  </FeatureStyle>
+</Stylesheet>
