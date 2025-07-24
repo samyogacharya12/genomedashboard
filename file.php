@@ -1,19 +1,32 @@
 <?php
 // === Step 1: Convert input.dat to output.bedGraph ===
-$inputDatFile = 'input.dat';
+$inputDatFile = 'wri.dat';
 $bedGraphFile = 'output.bedGraph';
 
 $lines = file($inputDatFile);
 $out = fopen($bedGraphFile, 'w');
 
-foreach ($lines as $line) {
+$chrom = "chr1";
+
+foreach ($lines as $i => $line) {
     $parts = preg_split('/\s+/', trim($line));
-    if (count($parts) === 4) {
-        fwrite($out, implode("\t", $parts) . "\n");
+    
+    // If line has two columns, use value from column 2
+    // Otherwise, treat whole line as a value (e.g., single-column input)
+    if (count($parts) >= 2 && is_numeric($parts[1])) {
+        $value = $parts[1];
+    } elseif (count($parts) === 1 && is_numeric($parts[0])) {
+        $value = $parts[0];
+    } else {
+        continue; // skip invalid lines
     }
+
+    $start = $i;       // dynamic index based on line number
+    $end = $i + 1;
+
+    fwrite($out, "$chrom\t$start\t$end\t$value\n");
 }
-fclose($out);
-echo "✅ Converted to bedGraph: $bedGraphFile\n";
+
 
 // === Step 2: Convert output.bedGraph to output.bw ===
 $chromSizesFile = 'chrom.sizes';  // ⚠️ Replace with actual path
