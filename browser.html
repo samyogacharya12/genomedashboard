@@ -2,45 +2,44 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Local Dalliance Viewer</title>
+  <title>Local Dalliance Viewer — Local .bb and .bw</title>
   <script src="dalliance-compiled.js"></script>
 </head>
 <body>
-  <h2>Dalliance Genome Browser (Local Test)</h2>
-  <div id="svgHolder"></div>
+  <h2>Dalliance Genome Browser — Local Test</h2>
+  <div id="svgHolder" style="height:500px;"></div>
 
   <script>
-var browser = new Browser({
-  chr: '22',
-  viewStart: 30700000,
-  viewEnd: 30900000,
-  coordSystem: {
-    speciesName: 'Human',
-    taxon: 9606,
-    auth: 'GRCh',
-    version: '37',
-    ucscName: 'hg19'
-  },
-  sources: [
-    {
-      name: 'Genome',
-      twoBitURI: 'hg19.2bit',
-      tier_type: 'sequence'
-    },
-    {
-      name: 'Tiny Signal',
-      bwgURI: 'ensGene.bb',
-      desc: '5 datapoint test',
-      stylesheet_uri: 'bb-density.xml'
-    },
-    {
-      name: 'My Output BigWig',
-      bwgURI: 'output.bw',
-      desc: 'Converted from DAT file',
-      stylesheet_uri: 'bb-density.xml'
-    }
-  ]
-});
+    var browser = new Browser({
+      chr: 'chr1',
+      viewStart: 30700000,
+      viewEnd: 30700100,
+      coordSystem: {
+        speciesName: 'Human',
+        taxon: 9606,
+        auth: 'GRCh',
+        version: '37',
+        ucscName: 'hg19'
+      },
+      sources: [
+        {
+          name: 'Genome Sequence',
+          twoBitURI: 'http://localhost:8080/file.2bit',
+          tier_type: 'sequence'
+        },
+                       {name:                 'Repeats',
+                   desc:                 'Repeat annotation from Ensembl',
+                   bwgURI:               '//www.biodalliance.org/datasets/repeats.bb',
+                   stylesheet_uri:       '//www.biodalliance.org/stylesheets/bb-repeats.xml'},
+                  {name:                 'Conservation',
+                   desc:                 'Conservation', 
+                   bwgURI:               '//www.biodalliance.org/datasets/phastCons46way.bw',
+                   noDownsample:         true}],
+      noPersist: true,
+      disablePoweredBy: true,
+      fullScreen: false,
+      holder: document.getElementById('svgHolder')
+    });
   </script>
 </body>
 </html>

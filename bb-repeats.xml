@@ -1,0 +1,59 @@
+
+<DASSTYLE>
+<STYLESHEET>
+<CATEGORY id="default">
+<TYPE id="default" method="Simple_repeat">
+<GLYPH>
+<BOX>
+<HEIGHT>10</HEIGHT>
+<BGCOLOR>gray</BGCOLOR>
+</BOX>
+</GLYPH>
+</TYPE>
+<TYPE id="default" method="LINE">
+<GLYPH zoom="low">
+<BOX>
+<HEIGHT>10</HEIGHT>
+<BGCOLOR>red</BGCOLOR>
+</BOX>
+</GLYPH>
+<GLYPH zoom="medium">
+<BOX>
+<HEIGHT>10</HEIGHT>
+<BGCOLOR>red</BGCOLOR>
+</BOX>
+</GLYPH>
+<GLYPH zoom="high">
+<BOX>
+<HEIGHT>10</HEIGHT>
+<BGCOLOR>red</BGCOLOR>
+<LABEL>true</LABEL>
+<BUMP>true</BUMP>
+</BOX>
+</GLYPH>
+</TYPE>
+<TYPE id="default">
+<GLYPH zoom="low">
+<BOX>
+<HEIGHT>10</HEIGHT>
+<BGCOLOR>orange</BGCOLOR>
+</BOX>
+</GLYPH>
+<GLYPH zoom="medium">
+<BOX>
+<HEIGHT>10</HEIGHT>
+<BGCOLOR>orange</BGCOLOR>
+</BOX>
+</GLYPH>
+<GLYPH zoom="high">
+<BOX>
+<HEIGHT>10</HEIGHT>
+<BGCOLOR>orange</BGCOLOR>
+<LABEL>true</LABEL>
+<BUMP>true</BUMP>
+</BOX>
+</GLYPH>
+</TYPE>
+</CATEGORY>
+</STYLESHEET>
+</DASSTYLE>

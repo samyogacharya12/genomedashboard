@@ -1,19 +1,17 @@
 <?php
 
 
-$uploadFile = 'shshs/hshs.dat';
-$savePath = '/sys';
-$apiUrl = "https://shshs/convert";
+$uploadFile = '/home/samyog/samyog/genome dashboard/wri.dat';
+$savePath = '/home/samyog/samyog/genome dashboard/output.bw';
+$apiUrl = "http://127.0.0.1:5000/convert";
 
 
 // === Configuration ===
-function convertFileThroughApi(string $uploadFile, string $savePath): bool
+function convertFileThroughApi(string $uploadFile, string $savePath): void
 {
     global $http_response_header,$apiUrl;
 
     if (!file_exists($uploadFile)) {
-        echo "Error: File '$uploadFile' does not exist.\n";
-        return false;
     }
 
     $boundary = uniqid();
@@ -42,13 +40,7 @@ function convertFileThroughApi(string $uploadFile, string $savePath): bool
 
     if ($http_response_header && strpos($http_response_header[0], "200") !== false) {
         file_put_contents($savePath, $response);
-        echo "✅ File saved to: $savePath\n";
-        return true;
     } else {
-        echo "❌ Request failed:\n";
-        print_r($http_response_header);
-        echo "\nResponse:\n$response\n";
-        return false;
     }
 }
 
